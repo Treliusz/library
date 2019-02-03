@@ -4,18 +4,21 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class BookBuilderTest {
+public class AudioBookBuilderTest {
 
     @Test
-    public void shouldBuildBookWhenBookDetailsAreDefined() {
+    public void shouldBuildAudioBookWhenBookDetailsAreDefined() {
         //given
         String authorFirstName = "Jan";
         String authorLastName = "Nowak";
         String title = "Rudowlosa";
+        Format format = Format.WAV;
         //when
-        Book book = new BookBuilder().setAuthorFirstName(authorFirstName)
-                .setAuthorLastName(authorLastName)
-                .setTitle(title)
+        AudioBook book = new AudioBookBuilder()
+                .authorFirstName(authorFirstName)
+                .authorLastName(authorLastName)
+                .format(Format.WAV)
+                .title(title)
                 .build();
         // then
         assertNotNull(book);
@@ -23,6 +26,10 @@ public class BookBuilderTest {
         assertEquals(authorFirstName, book.getAuthor().getFirstName());
         assertEquals(authorLastName, book.getAuthor().getLastName());
         assertEquals(title, book.getTitle());
+        assertEquals(format, book.getFormat());
+
     }
+
+
 
 }

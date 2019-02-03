@@ -3,13 +3,10 @@ package net.zakoduj.library.model;
 
 import java.util.Objects;
 
-public class Book {
-    private Author author;
-    private String title;
+public abstract class Book {
+    protected Author author;
+    protected String title;
 
-    Book() {
-
-    }
     public Author getAuthor() {
         return author;
     }
