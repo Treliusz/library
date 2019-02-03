@@ -16,7 +16,7 @@ public class LibraryTest {
         // given
         Library library = new Library();
         library.setListBook(new LinkedList<Book>());
-        Book book = new Book();
+        Book book = new AudioBook();
         book.setTitle("W pustyni i w puszczy");
         // when
         library.addBook(book);
@@ -28,7 +28,7 @@ public class LibraryTest {
     public void shouldAddBookWhenListOfBooksDoesNotExist() {
         // given
         Library library = new Library();
-        Book book = new Book();
+        Book book = new AudioBook();
         book.setTitle("W pustyni i w puszczy");
         // when
         library.addBook(book);
