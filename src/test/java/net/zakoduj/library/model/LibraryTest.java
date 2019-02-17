@@ -1,7 +1,6 @@
 package net.zakoduj.library.model;
 
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -15,14 +14,14 @@ public class LibraryTest {
     public void shouldAddBookWhenListOfBooksExist() {
         // given
         Library library = new Library();
-        library.setListBook(new LinkedList<Book>());
+        library.setMedia(new LinkedList<Book>());
         Book book = new AudioBook();
         book.setTitle("W pustyni i w puszczy");
         // when
-        library.addBook(book);
+        library.addMedium(book);
 
         // then
-        assertEquals(Arrays.asList(book), library.getListBook());
+        assertEquals(Arrays.asList(book), library.getMedia());
     }
     @Test
     public void shouldAddBookWhenListOfBooksDoesNotExist() {
@@ -31,10 +30,10 @@ public class LibraryTest {
         Book book = new AudioBook();
         book.setTitle("W pustyni i w puszczy");
         // when
-        library.addBook(book);
+        library.addMedium(book);
 
         // then
-        assertEquals(Arrays.asList(book), library.getListBook());
+        assertEquals(Arrays.asList(book), library.getMedia());
     }
 
 }

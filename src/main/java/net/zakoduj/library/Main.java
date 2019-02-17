@@ -5,54 +5,71 @@ import net.zakoduj.library.model.*;
 public class Main {
     public static void main(String[] args) {
 
-        Library<PaperBook> library = new Library<>();
+        Library<Medium> library = new Library<>();
         Library<AudioBook> library2 = new Library<>();
 
-        library.addBook(new PaperBookBuilder()
+
+        library.addMedium(new PaperBookBuilder()
                 .authorFirstName("Henryk")
                 .authorLastName("Sienkiewicz")
                 .title("Ogniem i mieczem")
+                .pageCount(345)
                 .build());
-        library.addBook(new PaperBookBuilder()
+        library.addMedium(new PaperBookBuilder()
                 .authorFirstName("Henryk")
                 .authorLastName("Sienkiewicz")
                 .title("Ogniem i mieczem")
                 .cover(Cover.SOFT)
                 .build());
 
-        library.addBook(new PaperBookBuilder()
+        library.addMedium(new PaperBookBuilder()
                 .authorFirstName("Henryk")
                 .authorLastName("Sienkiewicz")
                 .title("Ogniem i mieczem")
                 .cover(Cover.SOFT)
                 .build());
-        library2.addBook(new AudioBookBuilder()
+        library.addMedium(new AudioBookBuilder()
                 .authorFirstName("Henryk")
                 .authorLastName("Sienkiewicz")
                 .title("Ogniem i mieczem")
                 .format(Format.WAV)
                 .build());
-        library2.addBook(new AudioBookBuilder()
+        library.addMedium(new AudioBookBuilder()
                 .authorFirstName("Henryk")
                 .authorLastName("Sienkiewicz")
                 .title("Ogniem i mieczem")
                 .format(Format.WAV)
                 .build());
-        library2.addBook(new AudioBookBuilder()
+        library.addMedium(new AudioBookBuilder()
                 .authorFirstName("Henryk")
                 .authorLastName("Sienkiewicz")
                 .title("Ogniem i mieczem")
                 .format(Format.WAV)
+                .build());
+        library.addMedium(new MagazineBuilder()
+                .number(23)
+                .title("Programista")
+                .pageCount(100)
+                .build());
+        library.addMedium(new MovieBuilder()
+                .title("Przeminęło z wiatrem")
+                .directorFirstName("Henry")
+                .directorLastName("Smith")
+                .duration(120)
                 .build());
 
 
-        for (Book book : library.getListBook()) {
-            System.out.println(book);
-        }
+//        for (Medium medium : library.getMedia()) {
+//            System.out.println(medium);
+//        }
+
+
+        library.getMedia().forEach(System.out::println);
+
         System.out.println("\n----------------------------\n");
-        for (Book book : library2.getListBook()) {
-            System.out.println(book);
-        }
+//        for (Book book : library2.getMedia()) {
+//            System.out.println(book);
+//        }
 
 
     }

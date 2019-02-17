@@ -13,12 +13,14 @@ public class PaperBookBuilderTest {
         String authorLastName = "Nowak";
         String title = "Rudowlosa";
         Cover cover = Cover.HARD;
+        int pageCount = 100;
         //when
         PaperBook book = new PaperBookBuilder()
                 .authorFirstName(authorFirstName)
                 .authorLastName(authorLastName)
                 .cover(Cover.HARD)
                 .title(title)
+                .pageCount(pageCount)
                 .build();
         // then
         assertNotNull(book);
@@ -27,6 +29,7 @@ public class PaperBookBuilderTest {
         assertEquals(authorLastName, book.getAuthor().getLastName());
         assertEquals(title, book.getTitle());
         assertEquals(cover, book.getCover());
+        assertEquals(pageCount, book.getPageCount());
 
     }
 

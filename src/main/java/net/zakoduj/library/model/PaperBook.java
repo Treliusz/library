@@ -2,13 +2,15 @@ package net.zakoduj.library.model;
 
 import java.util.Objects;
 
-public class PaperBook extends Book{
+public class PaperBook extends Book implements PaperMedium{
+
 
     PaperBook() {
 
     }
 
     private Cover cover;
+    private int pageCount;
 
     public Cover getCover() {
         return cover;
@@ -16,6 +18,16 @@ public class PaperBook extends Book{
 
     public void setCover(Cover cover) {
         this.cover = cover;
+    }
+
+    @Override
+    public int getPageCount() {
+        return pageCount;
+    }
+
+    @Override
+    public void setPageCount(int pageCount) {
+        this.pageCount = pageCount;
     }
 
     @Override
@@ -34,8 +46,11 @@ public class PaperBook extends Book{
 
     @Override
     public String toString() {
-        return "Book: " + author +
-                " tytuł: " + title +
-                " cover: " + getCover();
+        return "PaperBook{" +
+                "cover=" + cover +
+                ", pageCount=" + pageCount +
+                ", author=" + author +
+                ", title='" + title + '\'' +
+                '}';
     }
 }

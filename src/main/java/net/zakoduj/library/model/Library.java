@@ -5,23 +5,23 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
-public class Library <T>{
+public class Library <T extends Medium>{
 
-    private List<T> listBook;
+    private List<T> media;
 
-    public List<T> getListBook() {
-        return Collections.unmodifiableList(listBook);
+    public List<T> getMedia() {
+        return Collections.unmodifiableList(media);
     }
 
-    public void setListBook(List<T> listBook) {
-        this.listBook = new LinkedList<>(listBook);
+    public void setMedia(List<T> media) {
+        this.media = new LinkedList<>(media);
     }
 
-    public void addBook(T book) {
-        if (listBook == null) {
-            listBook = new LinkedList<>();
+    public void addMedium(T medium) {
+        if (media == null) {
+            media = new LinkedList<>();
         }
-        listBook.add(book);
+        media.add(medium);
     }
 
     @Override
@@ -29,12 +29,12 @@ public class Library <T>{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Library library = (Library) o;
-        return Objects.equals(listBook, library.listBook);
+        return Objects.equals(media, library.media);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(listBook);
+        return Objects.hash(media);
     }
 
 
