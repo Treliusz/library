@@ -1,10 +1,38 @@
 package net.zakoduj.library;
 
+import net.zakoduj.library.command.Command;
+import net.zakoduj.library.command.DisplayMultimediaCommand;
+import net.zakoduj.library.command.FilterByTypeCommand;
 import net.zakoduj.library.model.*;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
+        Library<Medium> library = createLibrary();
+        Map<String, Command> commands = new HashMap<>();
+
+        Scanner scanner = new Scanner(System.in);
+
+        commands.put("exit", () -> System.exit(0));
+        commands.put("display", new DisplayMultimediaCommand(library,System.out));
+        commands.put("filter", new FilterByTypeCommand(library, System.out));
+
+        while (true) {
+            System.out.println("Podaj komendę:");
+            String commandName = scanner.nextLine();
+            Command command = commands.get(commandName);
+            Optional.ofNullable(command).ifPresent(Command::execute);
+        }
+
+
+    }
+
+    private static Library<Medium> createLibrary() {
         Library<Medium> library = new Library<>();
         Library<AudioBook> library2 = new Library<>();
 
@@ -57,20 +85,6 @@ public class Main {
                 .directorLastName("Smith")
                 .duration(120)
                 .build());
-
-
-//        for (Medium medium : library.getMedia()) {
-//            System.out.println(medium);
-//        }
-
-
-        library.getMedia().forEach(System.out::println);
-
-        System.out.println("\n----------------------------\n");
-//        for (Book book : library2.getMedia()) {
-//            System.out.println(book);
-//        }
-
-
+        return library;
     }
 }
